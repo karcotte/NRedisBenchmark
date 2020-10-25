@@ -27,7 +27,7 @@ namespace NRedisBenchmark
             [Option('p', "profile", Required = false, HelpText = "When set to true, the application will wait 30 seconds for attaching profilers.", Default = false)]
             public bool Profile { get; set; }
 
-            [Option('h', "hash_size", Required = false, HelpText = "Set the number of fields in a hash.", Default = 15)]
+            [Option("hash_size", Required = false, HelpText = "Set the number of fields in a hash.", Default = 15)]
             public int HashSize { get; set; }
 
             [Option('k', "key_name", Required = false, HelpText = "Set the hash key name.", Default = "key")]
@@ -96,7 +96,7 @@ namespace NRedisBenchmark
             {
                 _multiplexers[i] = ConnectionMultiplexer.Connect("localhost");
             }
-            _multiplexers[0].GetDatabase().KeyDelete(_keyName);
+           _multiplexers[0].GetDatabase().KeyDelete(_keyName);
             var t = Task.Factory.StartNew(() => printResults());
             for (int i = 0; i < _appThreads; i++)
             {
