@@ -123,12 +123,12 @@ namespace NRedisBenchmark
             _ct = new CancellationTokenSource(_timeout);
             for (int i = 0; i < _muxCount; i++)
             {
-                _multiplexers[i] = ConnectionMultiplexer.Connect("redis-14151.c238.us-central1-2.gce.cloud.redislabs.com:14151,syncTimeout=5000,password=FRUP9fos5vop_zush");
+                _multiplexers[i] = ConnectionMultiplexer.Connect(Environment.GetEnvironmentVariable("se.connection_string"));
                 //_multiplexers[i] = ConnectionMultiplexer.Connect("localhost:12000,syncTimeout=5000");
                 _multiplexers[i].IncludeDetailInExceptions = true;
                 //RedisClientManagerConfig config = new RedisClientManagerConfig();
                 
-                _managers[i] = new PooledRedisClientManager(_pooledConnections, 5, "FRUP9fos5vop_zush@redis-14151.c238.us-central1-2.gce.cloud.redislabs.com:14151");                
+                _managers[i] = new PooledRedisClientManager(_pooledConnections, 5, "ss.connection_string");                
                 //_managers[i] = new PooledRedisClientManager(10, 5, "localhost:12000");
                 _managers[i].ConnectTimeout = 5000;                
             }

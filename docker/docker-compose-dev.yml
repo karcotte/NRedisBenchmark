@@ -13,5 +13,6 @@ services:
     image: kyle/redis-benchmark
     container_name: benchmark
     environment:
-      - connection_string=redis:12000,connectRetry=3,connectTimeout=3000,abortConnect=false
+      - se.connection_string=redis:12000,connectRetry=3,connectTimeout=3000,abortConnect=false
+      - ss.connection_string=redis:12000
     command: "/wait-for-it.sh redis:9443 -- /run.sh"
