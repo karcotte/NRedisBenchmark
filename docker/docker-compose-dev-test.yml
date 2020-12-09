@@ -1,0 +1,17 @@
+version: '3'
+services:
+  redis:
+    image: redislabs/redis
+    container_name: redis    
+    ports:
+      - 8443:8443
+      - 9443:9443
+      - 12000:12000
+    cap_add:
+      - sys_resource
+  benchmark-tests:
+    image: kyle/redis-benchmark-tests
+    container_name: benchmark-tests
+    environment:
+      - connection_string=redis:12000,connectRetry=3,connectTimeout=3000,abortConnect=false
+    command: "/wait-for-it.sh redis:9443 -- /setup.sh"

@@ -1,0 +1,14 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 as builder
+
+COPY . /RedisFramework
+#RUN dotnet build
+#RUN dotnet publish -c Release
+RUN ls -al
+
+#FROM mcr.microsoft.com/dotnet/core/runtime:3.1
+COPY setup.sh /setup.sh
+COPY wait-for-it.sh /wait-for-it.sh
+WORKDIR /RedisFramework
+#COPY --from=builder /RedisConnectionSamples/bin/Release/netcoreapp3.1/publish/ App/
+#WORKDIR /App
+#ENTRYPOINT ["dotnet", "NetCore.Docker.dll"]

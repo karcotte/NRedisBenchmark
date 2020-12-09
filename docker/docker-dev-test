@@ -1,0 +1,8 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 as builder
+
+COPY . /NRedisBenchmark
+COPY ./docker/setup.sh /
+COPY ./docker/wait-for-it.sh /
+
+WORKDIR /NRedisBenchmark
+RUN dotnet build

@@ -6,6 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ServiceStack.Common" Version="3.9.71" />
+    <PackageReference Include="ServiceStack.Redis" Version="3.9.71" />
+    <PackageReference Include="ServiceStack.Text" Version="3.9.71" />
     <PackageReference Include="StackExchange.Redis" Version="1.2.6" />
     <PackageReference Include="System.Diagnostics.PerformanceCounter" Version="4.7.0" />
     <PackageReference Include="CommandLineParser" Version="2.8.0" />
